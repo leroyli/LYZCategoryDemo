@@ -9,6 +9,26 @@
 #import "UIView+LYZ.h"
 #import <objc/runtime.h>
 
+const char *hjw_leftBorderKey = "hjw_leftBorderKey";
+const char *hjw_rightBorderKey = "hjw_rightBorderKey";
+const char *hjw_topBorderKey = "hjw_topBorderKey";
+const char *hjw_bottomBorderKey = "hjw_bottomBorderKey";
+
+CGPoint CGRectGetCenter(CGRect rect) {
+    CGPoint pt;
+    pt.x = CGRectGetMidX(rect);
+    pt.y = CGRectGetMidY(rect);
+    return pt;
+}
+
+CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
+    CGRect newrect = CGRectZero;
+    newrect.origin.x = center.x - CGRectGetMidX(rect);
+    newrect.origin.y = center.y - CGRectGetMidY(rect);
+    newrect.size = rect.size;
+    return newrect;
+}
+
 @implementation UIView (LYZ)
 
 - (void)setX:(CGFloat)x
@@ -150,6 +170,199 @@
     //    会通过你在 values 这个字段指定的值分割出时间段。
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [shakeView.layer addAnimation:animation forKey:kAFViewShakerAnimationKey];
+}
+
+//加阴影
+- (void)addShadow {
+    self.layer.shadowOffset = CGSizeMake(0, 2);
+    self.layer.shadowOpacity = 0.24;
+    self.layer.shadowPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, self.height - 2, self.width == 320 ? [UIScreen mainScreen].bounds.size.width : self.width, 2)].CGPath;
+}
+
+//变圆
+- (UIView *)roundV {
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = self.width / 2;
+    return self;
+}
+
+static char kActionHandlerTapBlockKey;
+static char kActionHandlerTapGestureKey;
+static char kActionHandlerLongPressBlockKey;
+static char kActionHandlerLongPressGestureKey;
+
+//单点击手势
+- (void)tapGesture:(GestureActionBlock)block {
+    self.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = objc_getAssociatedObject(self, &kActionHandlerTapGestureKey);
+    if (!gesture) {
+        gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleActionForTapGesture:)];
+        [self addGestureRecognizer:gesture];
+        objc_setAssociatedObject(self, &kActionHandlerTapGestureKey, gesture, OBJC_ASSOCIATION_RETAIN);
+    }
+    objc_setAssociatedObject(self, &kActionHandlerTapBlockKey, block, OBJC_ASSOCIATION_COPY);
+}
+
+- (void)handleActionForTapGesture:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
+        GestureActionBlock block = objc_getAssociatedObject(self, &kActionHandlerTapBlockKey);
+        if (block) {
+            block(gesture);
+        }
+    }
+}
+
+//长按手势
+- (void)longPressGestrue:(GestureActionBlock)block {
+    self.userInteractionEnabled = YES;
+    UILongPressGestureRecognizer *gesture = objc_getAssociatedObject(self, &kActionHandlerLongPressGestureKey);
+    if (!gesture) {
+        gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleActionForLongPressGesture:)];
+        [self addGestureRecognizer:gesture];
+        objc_setAssociatedObject(self, &kActionHandlerLongPressGestureKey, gesture, OBJC_ASSOCIATION_RETAIN);
+    }
+    objc_setAssociatedObject(self, &kActionHandlerLongPressBlockKey, block, OBJC_ASSOCIATION_COPY);
+}
+
+- (void)handleActionForLongPressGesture:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        GestureActionBlock block = objc_getAssociatedObject(self, &kActionHandlerLongPressBlockKey);
+        if (block) {
+            block(gesture);
+        }
+    }
+}
+
+/** 移除对应的view */
+- (void)removeClassView:(Class)classV {
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:classV]) {
+            [view removeFromSuperview];
+        }
+    }
+}
+
+/** 添加边框:四边 */
+- (void)border:(UIColor *)color width:(CGFloat)width CornerRadius:(CGFloat)radius {
+    if (radius == 0) {
+        [self border:color width:width];
+    } else {
+        CALayer *layer = self.layer;
+        if (color != nil) {
+            layer.borderColor = color.CGColor;
+        }
+        layer.cornerRadius = radius;
+        layer.masksToBounds = YES;
+        layer.borderWidth = width;
+    }
+}
+/** 四边变圆 */
+- (void)borderRoundCornerRadius:(CGFloat)radius {
+    CALayer *layer = self.layer;
+    
+    layer.cornerRadius = radius;
+    layer.masksToBounds = YES;
+}
+//添加边框
+- (void)border:(UIColor *)color width:(CGFloat)width;
+{
+    CALayer *layer = self.layer;
+    if (color != nil) {
+        layer.borderColor = color.CGColor;
+    }
+    layer.cornerRadius = 4;
+    layer.masksToBounds = YES;
+    layer.borderWidth = width;
+}
+
+- (void)borderRound {
+    CALayer *layer = self.layer;
+    layer.cornerRadius = 4;
+    layer.masksToBounds = YES;
+}
+
+- (void)hjw_setCornerWithType:(HJWCorner)cornerType cornerRadius:(CGFloat)radius
+{
+    UIBezierPath *maskPath;
+    switch (cornerType) {
+        case HJWCornerTop:
+        {
+            maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                             byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
+                                                   cornerRadii:CGSizeMake(radius, radius)];
+        }
+            break;
+        case HJWCornerLeft:
+        {
+            maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                             byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft)
+                                                   cornerRadii:CGSizeMake(radius, radius)];
+        }
+            break;
+        case HJWCornerBottom:
+        {
+            maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                             byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)
+                                                   cornerRadii:CGSizeMake(radius, radius)];
+        }
+            break;
+        case HJWCornerRight:
+        {
+            maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                             byRoundingCorners:(UIRectCornerTopRight | UIRectCornerBottomRight)
+                                                   cornerRadii:CGSizeMake(radius, radius)];
+            
+        }
+            break;
+        case HJWCornerAll:
+        {
+            maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:radius];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
+- (void)hjw_setBorders:(HJWBorder)Borders color:(UIColor *)color width:(CGFloat)width
+{
+    if((Borders & HJWBorderLeft) == HJWBorderLeft)
+    {
+        [self hjw_showBorderViewWithKey:hjw_leftBorderKey frame:CGRectMake(0, 0, width, self.frame.size.height) color:color];
+    }
+    if((Borders & HJWBorderRight) == HJWBorderRight)
+    {
+        [self hjw_showBorderViewWithKey:hjw_rightBorderKey frame:CGRectMake(self.frame.size.width - width, 0, width, self.frame.size.height) color:color];
+    }
+    if((Borders & HJWBorderTop) == HJWBorderTop)
+    {
+        [self hjw_showBorderViewWithKey:hjw_topBorderKey frame:CGRectMake(0, 0, self.frame.size.width, width) color:color];
+    }
+    if((Borders & HJWBorderBottom) == HJWBorderBottom)
+    {
+        [self hjw_showBorderViewWithKey:hjw_bottomBorderKey frame:CGRectMake(0, self.frame.size.height - width, self.frame.size.width, width) color:color];
+    }
+}
+
+#pragma mark - pravite methods
+- (void)hjw_showBorderViewWithKey:(const void *)key frame:(CGRect)frame color:(UIColor *)color
+{
+    UIView *border = objc_getAssociatedObject(self, key);
+    if (border) {
+        border.frame = frame;
+        border.backgroundColor = color;
+        border.hidden = NO;
+    }else{
+        UIView *newBorder = [[UIView alloc] initWithFrame:frame];
+        newBorder.backgroundColor = color;
+        [self addSubview:newBorder];
+        objc_setAssociatedObject(self, key, newBorder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 
 

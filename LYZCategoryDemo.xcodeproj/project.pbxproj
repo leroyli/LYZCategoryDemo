@@ -16,12 +16,8 @@
 		AE27AA3A1E079C33009DFD80 /* LYZCategoryDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA391E079C33009DFD80 /* LYZCategoryDemoTests.m */; };
 		AE27AA451E079C33009DFD80 /* LYZCategoryDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA441E079C33009DFD80 /* LYZCategoryDemoUITests.m */; };
 		AE27AA781E079C64009DFD80 /* CALayer+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA541E079C64009DFD80 /* CALayer+LYZ.m */; };
-		AE27AA791E079C64009DFD80 /* NSArray+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA571E079C64009DFD80 /* NSArray+LYZ.m */; };
 		AE27AA7A1E079C64009DFD80 /* NSDate+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA591E079C64009DFD80 /* NSDate+LYZ.m */; };
 		AE27AA7B1E079C64009DFD80 /* NSDate+LYZDate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA5B1E079C64009DFD80 /* NSDate+LYZDate.m */; };
-		AE27AA7C1E079C64009DFD80 /* NSDictionary+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA5D1E079C64009DFD80 /* NSDictionary+LYZ.m */; };
-		AE27AA7D1E079C64009DFD80 /* NSMutableArray+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA5F1E079C64009DFD80 /* NSMutableArray+LYZ.m */; };
-		AE27AA7E1E079C64009DFD80 /* NSMutableDictionary+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA611E079C64009DFD80 /* NSMutableDictionary+LYZ.m */; };
 		AE27AA7F1E079C64009DFD80 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA631E079C64009DFD80 /* NSString+Extension.m */; };
 		AE27AA801E079C64009DFD80 /* NSString+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA651E079C64009DFD80 /* NSString+LYZ.m */; };
 		AE27AA811E079C64009DFD80 /* UIBarButtonItem+LYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = AE27AA671E079C64009DFD80 /* UIBarButtonItem+LYZ.m */; };
@@ -72,18 +68,10 @@
 		AE27AA531E079C64009DFD80 /* CALayer+LYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LYZ.h"; sourceTree = "<group>"; };
 		AE27AA541E079C64009DFD80 /* CALayer+LYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LYZ.m"; sourceTree = "<group>"; };
 		AE27AA551E079C64009DFD80 /* LYZCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZCategory.h; sourceTree = "<group>"; };
-		AE27AA561E079C64009DFD80 /* NSArray+LYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+LYZ.h"; sourceTree = "<group>"; };
-		AE27AA571E079C64009DFD80 /* NSArray+LYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LYZ.m"; sourceTree = "<group>"; };
 		AE27AA581E079C64009DFD80 /* NSDate+LYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LYZ.h"; sourceTree = "<group>"; };
 		AE27AA591E079C64009DFD80 /* NSDate+LYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LYZ.m"; sourceTree = "<group>"; };
 		AE27AA5A1E079C64009DFD80 /* NSDate+LYZDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LYZDate.h"; sourceTree = "<group>"; };
 		AE27AA5B1E079C64009DFD80 /* NSDate+LYZDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LYZDate.m"; sourceTree = "<group>"; };
-		AE27AA5C1E079C64009DFD80 /* NSDictionary+LYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LYZ.h"; sourceTree = "<group>"; };
-		AE27AA5D1E079C64009DFD80 /* NSDictionary+LYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LYZ.m"; sourceTree = "<group>"; };
-		AE27AA5E1E079C64009DFD80 /* NSMutableArray+LYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+LYZ.h"; sourceTree = "<group>"; };
-		AE27AA5F1E079C64009DFD80 /* NSMutableArray+LYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+LYZ.m"; sourceTree = "<group>"; };
-		AE27AA601E079C64009DFD80 /* NSMutableDictionary+LYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+LYZ.h"; sourceTree = "<group>"; };
-		AE27AA611E079C64009DFD80 /* NSMutableDictionary+LYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+LYZ.m"; sourceTree = "<group>"; };
 		AE27AA621E079C64009DFD80 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		AE27AA631E079C64009DFD80 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		AE27AA641E079C64009DFD80 /* NSString+LYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LYZ.h"; sourceTree = "<group>"; };
@@ -202,18 +190,10 @@
 				AE27AA531E079C64009DFD80 /* CALayer+LYZ.h */,
 				AE27AA541E079C64009DFD80 /* CALayer+LYZ.m */,
 				AE27AA551E079C64009DFD80 /* LYZCategory.h */,
-				AE27AA561E079C64009DFD80 /* NSArray+LYZ.h */,
-				AE27AA571E079C64009DFD80 /* NSArray+LYZ.m */,
 				AE27AA581E079C64009DFD80 /* NSDate+LYZ.h */,
 				AE27AA591E079C64009DFD80 /* NSDate+LYZ.m */,
 				AE27AA5A1E079C64009DFD80 /* NSDate+LYZDate.h */,
 				AE27AA5B1E079C64009DFD80 /* NSDate+LYZDate.m */,
-				AE27AA5C1E079C64009DFD80 /* NSDictionary+LYZ.h */,
-				AE27AA5D1E079C64009DFD80 /* NSDictionary+LYZ.m */,
-				AE27AA5E1E079C64009DFD80 /* NSMutableArray+LYZ.h */,
-				AE27AA5F1E079C64009DFD80 /* NSMutableArray+LYZ.m */,
-				AE27AA601E079C64009DFD80 /* NSMutableDictionary+LYZ.h */,
-				AE27AA611E079C64009DFD80 /* NSMutableDictionary+LYZ.m */,
 				AE27AA621E079C64009DFD80 /* NSString+Extension.h */,
 				AE27AA631E079C64009DFD80 /* NSString+Extension.m */,
 				AE27AA641E079C64009DFD80 /* NSString+LYZ.h */,
@@ -378,22 +358,18 @@
 			files = (
 				AE27AA891E079C64009DFD80 /* UIViewController+NavBarHidden.m in Sources */,
 				AE27AA7A1E079C64009DFD80 /* NSDate+LYZ.m in Sources */,
-				AE27AA7D1E079C64009DFD80 /* NSMutableArray+LYZ.m in Sources */,
 				AE27AA881E079C64009DFD80 /* UIView+LYZ.m in Sources */,
 				AE27AA821E079C64009DFD80 /* UIButton+Edg.m in Sources */,
 				AE27AA871E079C64009DFD80 /* UILabel+LYZ.m in Sources */,
 				AE27AA271E079C32009DFD80 /* ViewController.m in Sources */,
 				AE27AA801E079C64009DFD80 /* NSString+LYZ.m in Sources */,
-				AE27AA7E1E079C64009DFD80 /* NSMutableDictionary+LYZ.m in Sources */,
 				AE27AA811E079C64009DFD80 /* UIBarButtonItem+LYZ.m in Sources */,
-				AE27AA791E079C64009DFD80 /* NSArray+LYZ.m in Sources */,
 				AE27AA7F1E079C64009DFD80 /* NSString+Extension.m in Sources */,
 				AE27AA861E079C64009DFD80 /* UIImage+LYZ.m in Sources */,
 				AE27AA241E079C32009DFD80 /* AppDelegate.m in Sources */,
 				AE27AA831E079C64009DFD80 /* UIButton+LYZ.m in Sources */,
 				AE27AA211E079C32009DFD80 /* main.m in Sources */,
 				AE27AA7B1E079C64009DFD80 /* NSDate+LYZDate.m in Sources */,
-				AE27AA7C1E079C64009DFD80 /* NSDictionary+LYZ.m in Sources */,
 				AE27AA781E079C64009DFD80 /* CALayer+LYZ.m in Sources */,
 				AE27AA851E079C64009DFD80 /* UIControl+buttonOnClick.m in Sources */,
 				AE27AA841E079C64009DFD80 /* UIColor+LYZ.m in Sources */,
@@ -634,6 +610,7 @@
 				AE27AA4B1E079C33009DFD80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE27AA4C1E079C33009DFD80 /* Build configuration list for PBXNativeTarget "LYZCategoryDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -642,6 +619,7 @@
 				AE27AA4E1E079C33009DFD80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE27AA4F1E079C33009DFD80 /* Build configuration list for PBXNativeTarget "LYZCategoryDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -650,6 +628,7 @@
 				AE27AA511E079C33009DFD80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
